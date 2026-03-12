@@ -39,11 +39,48 @@
             border-bottom: 1px solid rgba(92, 215, 219, 0.15);
         }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.96) 0%, rgba(18, 18, 18, 0.88) 100%),
-                        url('https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-position: center;
+        /* Hero Styling based on reference image */
+        .hero-section {
+            background-color: var(--color-black);
+            background-image: radial-gradient(rgba(92, 215, 219, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px; /* Dot grid effect */
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .pill-badge {
+            border: 1px solid var(--color-aqua);
+            border-radius: 999px;
+            padding: 6px 24px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            color: var(--color-aqua);
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            max-width: 1200px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
         }
 
         /* Reference Image Card Style */
@@ -97,6 +134,44 @@
             box-shadow: 0 0 40px rgba(92, 215, 219, 0.1);
         }
 
+        /* Technical Pillars Section Icons */
+        .pillar-icon-box {
+            width: 56px;
+            height: 56px;
+            border: 1.5px solid var(--color-aqua);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-aqua);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .pillar-icon-box {
+            background-color: var(--color-aqua);
+            color: var(--color-black);
+            box-shadow: 0 0 20px rgba(92, 215, 219, 0.4);
+        }
+
+        /* Eye-catching Feature List Styles */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .feature-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--color-aqua);
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px var(--color-aqua);
+        }
+
         @keyframes pulse-ring {
             0% { transform: scale(0.95); opacity: 0.5; }
             50% { transform: scale(1.05); opacity: 0.8; }
@@ -109,7 +184,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Navigation (Service Logo Only) -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center h-28 items-center">
@@ -135,24 +210,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <header>
-        <div class="hero-gradient min-h-[95vh] flex items-center relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10 text-center">
-                <div class="max-w-4xl mx-auto">
-                    <span class="inline-block px-5 py-2 rounded-full bg-aqua/10 text-aqua font-bold text-xs uppercase tracking-[0.2em] mb-10 border border-aqua/30">
-                        High-Precision Documentation
-                    </span>
-                    <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight mb-8 tracking-tighter">
-                        Architectural <br/>
-                        <span class="text-aqua">Construction</span> Drawing
-                    </h1>
-                    <div class="w-32 h-1 bg-gradient-to-r from-transparent via-aqua to-transparent mx-auto mb-12"></div>
-                    <p class="text-xl md:text-2xl text-gray-400 mb-10 leading-relaxed font-light max-w-2xl mx-auto">
-                        We transform conceptual designs into code-compliant, detailed, and precise physical blueprints for elite architectural firms across Australia.
-                    </p>
-                </div>
-            </div>
-            <div class="absolute inset-0 opacity-[0.07] pointer-events-none" style="background-image: radial-gradient(#5CD7DB 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <header class="hero-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+            <div class="pill-badge">High-Precision Documentation</div>
+            <h1 class="hero-title">
+                Architectural<br/>
+                <span class="text-aqua">Construction</span><br/>
+                Drawing
+            </h1>
+            <p class="hero-description">
+                Expert architectural construction drawing services designed to transform complex concepts into buildable reality. We provide professional, code-compliant documentation and detailed technical blueprints for elite firms across Australia.
+            </p>
         </div>
     </header>
 
@@ -201,7 +269,7 @@
         <div class="stat-line absolute bottom-0 left-0 w-full opacity-30"></div>
     </section>
 
-    <!-- Core Service Pillars Section -->
+    <!-- Core Pillars Section -->
     <section class="py-32 bg-dark-accent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-24">
@@ -209,64 +277,64 @@
                     Core Pillars of <span class="text-aqua text-glow">Technical Construction Drawing</span>
                 </h2>
                 <p class="text-gray-500 max-w-3xl mx-auto font-light text-lg leading-relaxed">
-                    Our methodology combines algorithmic precision with deep architectural intelligence to deliver documentation that ensures project viability.
+                    As a leader in architectural drafting Australia, our informative methodology integrates rigorous technical standards with high-end digital precision to deliver project documentation that ensures absolute viability on-site.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1: Zero-Error Regulatory Compliance -->
-                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group">
-                    <div class="w-14 h-14 bg-aqua/10 rounded-xl flex items-center justify-center text-aqua text-2xl mb-8 border border-aqua/20 group-hover:bg-aqua group-hover:text-black transition-all duration-500">
-                        <i class="fas fa-file-shield"></i>
+                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group bg-black/40">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-shield-halved"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Zero-Error Regulatory Compliance</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed font-light">
-                        Full spectrum adherence to NCC, AS standards, and specific state codes to ensure seamless council approvals and zero legal friction.
-                    </p>
+                    <h3 class="text-xl font-bold mb-5 text-white">Zero-Error Regulatory Compliance</h3>
+                    <div class="space-y-4 text-gray-500 text-sm leading-relaxed font-light">
+                        <p>Our professional architectural drawing services prioritize absolute adherence to the National Construction Code (NCC) and Australian Standards (AS).</p>
+                        <p>We provide comprehensive permit sets and DA/CC documentation that mitigate legal risks and ensure seamless council approvals.</p>
+                    </div>
                 </div>
 
-                <!-- Card 2: Proactive Clash Detection -->
-                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group">
-                    <div class="w-14 h-14 bg-aqua/10 rounded-xl flex items-center justify-center text-aqua text-2xl mb-8 border border-aqua/20 group-hover:bg-aqua group-hover:text-black transition-all duration-500">
-                        <i class="fas fa-object-ungroup"></i>
+                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group bg-black/40">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-microchip"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Proactive Clash Detection</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed font-light">
-                        Automated and manual BIM auditing to identify structural, mechanical, and architectural overlaps before they reach the site.
-                    </p>
+                    <h3 class="text-xl font-bold mb-5 text-white">Proactive Clash Detection</h3>
+                    <div class="space-y-4 text-gray-500 text-sm leading-relaxed font-light">
+                        <p>Precise construction drawing requires early identification of multi-discipline overlaps. We utilize advanced BIM auditing to detect structural and MEP conflicts.</p>
+                        <p>By resolving clashes in the digital twin environment, we significantly reduce on-site variations and rework.</p>
+                    </div>
                 </div>
 
-                <!-- Card 3: High-Fidelity Detailing & Material Logic -->
-                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group">
-                    <div class="w-14 h-14 bg-aqua/10 rounded-xl flex items-center justify-center text-aqua text-2xl mb-8 border border-aqua/20 group-hover:bg-aqua group-hover:text-black transition-all duration-500">
-                        <i class="fas fa-pen-ruler"></i>
+                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group bg-black/40">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-pencil-ruler"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">High-Fidelity Detailing & Material Logic</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed font-light">
-                        Micro-level focus on joint integrity, material transitions, and thermal logic that translates complex design intent into buildable reality.
-                    </p>
+                    <h3 class="text-xl font-bold mb-5 text-white">High-Fidelity Detailing & Material Logic</h3>
+                    <div class="space-y-4 text-gray-500 text-sm leading-relaxed font-light">
+                        <p>Our architectural construction drawing services focus on micro-level integrity, from joint transitions to complex waterproofing details.</p>
+                        <p>We develop rigorous material schedules and assembly logic that ensure design intent is never compromised during physical execution.</p>
+                    </div>
                 </div>
 
-                <!-- Card 4: Optimized Constructability & Site Readiness -->
-                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group">
-                    <div class="w-14 h-14 bg-aqua/10 rounded-xl flex items-center justify-center text-aqua text-2xl mb-8 border border-aqua/20 group-hover:bg-aqua group-hover:text-black transition-all duration-500">
+                <div class="p-10 rounded-[2rem] service-card relative overflow-hidden group bg-black/40">
+                    <div class="pillar-icon-box">
                         <i class="fas fa-helmet-safety"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Optimized Constructability & Site Readiness</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed font-light">
-                        Documentation sets engineered for rapid field deployment, emphasizing logical assembly sequences and contractor-friendly site sets.
-                    </p>
+                    <h3 class="text-xl font-bold mb-5 text-white">Optimized Constructability & Site Readiness</h3>
+                    <div class="space-y-4 text-gray-500 text-sm leading-relaxed font-light">
+                        <p>We produce shovel-ready documentation sets engineered for immediate on-site deployment, minimizing RFIs through clear technical communication.</p>
+                        <p>Our sets emphasize logical assembly sequences and contractor-friendly site sets, ensuring that construction progresses with surgical clarity.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Multi-Disciplinary Expertise -->
+    <!-- Our Another Expertise Section -->
     <section class="py-32 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Our Another <span class="text-aqua">Expertise</span></h2>
-                <p class="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">We deliver high-end technical documentation and architectural solutions tailored for the complex Australian build environment.</p>
+                <p class="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">Providing end-to-end technical solutions through professional architectural drawing services tailored for complex build environments.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -276,17 +344,28 @@
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=1200" alt="CAD Drafting">
                     </div>
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3 mb-6">
                         <span class="text-aqua font-bold text-sm">01</span>
                         <h3 class="text-2xl font-bold text-white tracking-tight">CAD Drafting Services</h3>
                     </div>
-                    <div class="space-y-4 text-gray-400 leading-relaxed">
-                        <p>
-                            <strong class="text-white">Precision-driven documentation.</strong> Expert CAD drafting remains the definitive backbone of architectural execution. We provide high-fidelity 2D documentation that serves as the essential guide for builders and contractors on the ground.
+                    <div class="text-gray-400 space-y-6">
+                        <p class="font-light">
+                            <strong class="text-white">Precision-driven documentation.</strong> Expert architectural drafting serves as the definitive roadmap for site execution, bridging the critical gap between concept and physical build.
                         </p>
-                        <p>
-                            Our team meticulously details every structural element, ensuring that floor plans, reflective ceiling plans, and site layouts are perfectly synchronized. By adhering to the most stringent <span class="text-aqua">Australian CAD standards</span>, we eliminate ambiguity and facilitate a seamless construction workflow.
-                        </p>
+                        <div class="space-y-3">
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">High-fidelity 2D documentation and technical drawing sets for permit approval.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Meticulous floor plans, reflective ceiling plans, and site layouts for construction.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Rigorous adherence to drafting standards ensuring flawless on-site communication.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -295,17 +374,28 @@
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200" alt="BIM Solutions">
                     </div>
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3 mb-6">
                         <span class="text-aqua font-bold text-sm">02</span>
                         <h3 class="text-2xl font-bold text-white tracking-tight">BIM Solutions</h3>
                     </div>
-                    <div class="space-y-4 text-gray-400 leading-relaxed">
-                        <p>
-                            <strong class="text-white">Intelligent virtual construction.</strong> We leverage the full power of Building Information Modeling (BIM) to create data-rich 3D environments. Moving beyond static drawings, our Revit models act as a single source of truth for all engineering disciplines.
+                    <div class="text-gray-400 space-y-6">
+                        <p class="font-light">
+                            <strong class="text-white">Intelligent virtual construction.</strong> Our architectural construction drawing services leverage data-rich 3D environments to eliminate cross-discipline errors before breaking ground.
                         </p>
-                        <p>
-                            This integrated approach allows us to simulate construction sequences and manage complex geometry with surgical precision. Our BIM solutions are designed to <span class="text-aqua">optimize lifecycle management</span>, providing stakeholders with an invaluable digital asset that persists long after the build is complete.
-                        </p>
+                        <div class="space-y-3">
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Advanced Revit modeling and 3D digital twinning for information transparency.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Automated extraction of construction drawing sets for consistent documentation.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Collaborative cloud-based workflows aligned with global engineering standards.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -314,17 +404,28 @@
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" alt="3D Visualizations">
                     </div>
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3 mb-6">
                         <span class="text-aqua font-bold text-sm">03</span>
                         <h3 class="text-2xl font-bold text-white tracking-tight">3D Visualizations</h3>
                     </div>
-                    <div class="space-y-4 text-gray-400 leading-relaxed">
-                        <p>
-                            <strong class="text-white">Conceptual clarity brought to life.</strong> Bridging the gap between conceptual vision and physical reality, our visualization services bring unbuilt architecture into vivid focus. We specialize in photorealistic rendering and environment simulation.
+                    <div class="text-gray-400 space-y-6">
+                        <p class="font-light">
+                            <strong class="text-white">Photorealistic environmental simulation.</strong> We bridge the technical and sensory experience, bringing architectural drawing services to life for critical stakeholder approvals.
                         </p>
-                        <p>
-                            These high-fidelity visuals are essential tools for critical <span class="text-aqua">stakeholder approvals</span>, investor presentations, and pre-construction marketing. By providing an immersive look at the finished asset, we help identify aesthetic refinements and gain buy-in before the first brick is laid.
-                        </p>
+                        <div class="space-y-3">
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Advanced lighting and material logic for immersive stakeholder presentations.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Environment-specific simulations including lighting studies and site impact.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">High-resolution visual output for pre-construction marketing and investor buy-in.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -333,17 +434,28 @@
                     <div class="card-img-container">
                         <img src="https://images.unsplash.com/photo-1517089534702-8a9b2e11f11d?auto=format&fit=crop&q=80&w=1200" alt="Steel Detailing">
                     </div>
-                    <div class="flex items-center gap-3 mb-4">
+                    <div class="flex items-center gap-3 mb-6">
                         <span class="text-aqua font-bold text-sm">04</span>
                         <h3 class="text-2xl font-bold text-white tracking-tight">Structural Steel Detailing Solutions</h3>
                     </div>
-                    <div class="space-y-4 text-gray-400 leading-relaxed">
-                        <p>
-                            <strong class="text-white">The structural skeleton of excellence.</strong> Our detailing solutions provide the surgical precision required for the frame of any modern structure. We develop comprehensive shop drawings that interface directly with fabrication machinery.
+                    <div class="text-gray-400 space-y-6">
+                        <p class="font-light">
+                            <strong class="text-white">Surgical framing precision.</strong> Providing specialized detailing that interfaces directly with fabrication logic for seamless structural assembly and material efficiency.
                         </p>
-                        <p>
-                            Every bolt, weld, and member is accounted for, ensuring the transition from workshop to site is flawless. By focusing on <span class="text-aqua">constructability and material efficiency</span>, we help fabricators reduce waste and builders accelerate assembly times across industrial and commercial projects.
-                        </p>
+                        <div class="space-y-3">
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Meticulous shop drawings focused on rapid site erection and zero-margin error.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Optimized fabrication sets for industrial frames and commercial structural steel.</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-dot"></div>
+                                <span class="text-sm">Complete accounting for complex weldments, bolts, and structural connections.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -353,12 +465,12 @@
 
     <!-- Final Small Branding Footer -->
     <div class="py-20 bg-black border-t border-white/5 text-center">
-        <div class="flex flex-col items-center gap-10">
+        <div class="flex flex-col items-center gap-8">
             <svg width="40" height="40" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
                 <circle cx="60" cy="60" r="50" stroke="#5CD7DB" stroke-width="2" stroke-dasharray="4 8"/>
                 <path d="M30 90V45C30 31.1929 41.1929 20 55 20H65C78.8071 20 90 31.1929 90 45V90" stroke="#5CD7DB" stroke-width="8"/>
             </svg>
-            <p class="text-gray-700 text-[10px] tracking-[0.5em] uppercase font-bold">Copyright © 2026 Architectural Construction Drawing Services</p>
+            <p class="text-gray-600 text-[12px] tracking-[0.4em] uppercase font-bold">Architectural Construction Drawing Services</p>
         </div>
     </div>
 
